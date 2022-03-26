@@ -1,7 +1,5 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { notifyOptions } from './notifyOptions';
-import templateCard from './handlebars/card';
-import templateList from './handlebars/list';
 
 const refs = {
   list: document.querySelector('.country-list'),
@@ -15,14 +13,25 @@ export function draw(data) {
     return;
   }
 
-  //draw if ok
-  //card
+  //draw card
   if (data.length === 1) {
-    refs.card.innerHTML = templateCard(data[0]);
-    console.log(data[0].flags);
+    const { flags, name, capital, population, languages } = data[0];
+    let markup = `<h1 class="card__title"><img width="70" height="50"src='${
+      flags.svg
+    }' class="card__flag"></span>${name.common}</h1>
+<p class="card__text"><span class="card__text-title">Capital:</span> ${capital}</p>
+<p class="card__text"><span class="card__text-title">Population:</span> ${population}</p>
+<p class="card__text"><span class="card__text-title">Languages:</span> 
+${Object.values(languages).join(', ')}
+</p>`;
+    refs.card.insertAdjacentHTML('afterbegin', markup);
   } else {
-    //list
-    refs.list.innerHTML = templateList(data);
+    //draw list
+    let markup = '';
+    data.forEach(country => {
+      markup += `<li class="item"><img width="45" height="30"src='${country.flags.svg}'class="item__flag"><span class="item__name">${country.name.common}</span></li>`;
+    });
+    refs.list.insertAdjacentHTML('afterbegin', markup);
   }
 }
 
