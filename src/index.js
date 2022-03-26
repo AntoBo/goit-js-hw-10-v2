@@ -1,4 +1,6 @@
-import './css/styles.css';
+// import './css/styles.css';
+import './sass/main.scss';
+
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { notifyOptions } from './notifyOptions';
 import { fetchCountries } from './fetchCountries';

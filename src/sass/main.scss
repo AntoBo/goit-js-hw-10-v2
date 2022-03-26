@@ -41,16 +41,15 @@ body {
   align-items: center;
   list-style-type: none;
   margin: 10px 0px;
-}
+  &__name {
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: 600;
+  }
 
-.item__flag {
-  margin: 5px;
-}
-
-.item__name {
-  margin-left: 10px;
-  font-size: 18px;
-  font-weight: 600;
+  &__flag {
+    margin: 5px;
+  }
 }
 
 #search-box {
